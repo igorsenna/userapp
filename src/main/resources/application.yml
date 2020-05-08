@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: null
+    username: postgres
+    password: mysecretpassword
+    name: postgres
+database:
+  port: 5432
