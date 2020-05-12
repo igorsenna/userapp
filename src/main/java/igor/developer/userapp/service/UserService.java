@@ -1,6 +1,5 @@
 package igor.developer.userapp.service;
 
-
 import igor.developer.userapp.model.User;
 import igor.developer.userapp.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +14,6 @@ import java.util.Optional;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
-
-//    public User createUser(User user){
-//        return userRepository.save(user);
-//    }
-//    public User createUser(long id, User userProfile){
-//        return userRepository.save(userProfile);
-//}
 
     public User createUser(User userProfile){
         return userRepository.save(userProfile);
@@ -40,7 +32,13 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User updateUser(long id, User userProfile){
+    public User updateUser(String id, User userProfile){
+        userProfile.setId(id);
         return  userRepository.save(userProfile);
     }
+
+    public void deleteUser(String id){
+        userRepository.deleteById(id);
+    }
+
 }

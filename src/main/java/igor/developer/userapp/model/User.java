@@ -1,12 +1,7 @@
 package igor.developer.userapp.model;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -16,6 +11,18 @@ public class User {
     private  String name;
     private  String surname;
     private  String email;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user_id")
+    //@JoinColumn(name = "user_Id")
+    private List<Ad> ads;
+
+    public List<Ad> getAds() {
+        return ads;
+    }
+
+    public void setAds(List<Ad> ads) {
+        this.ads = ads;
+    }
 
     public String getId() {
         return id;
